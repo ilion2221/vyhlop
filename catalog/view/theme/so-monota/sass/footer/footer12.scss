@@ -1,0 +1,211 @@
+
+//** simple and lightweight mixin library for Sass **
+//-- url : http://bourbon.io/docs ---
+@import 'bourbon/bourbon';
+
+//** Mixins for Rem Font Sizing **
+//-- url : http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@import 'utilities/rem';
+
+//** Variables for responsive design in bootstrap with sass **
+//-- url : https://gist.github.com/webinfinita/11407836
+@import 'utilities/bootstrap_breakpoints';
+
+//** Makes supporting both left-to-right (LTR) and right-to-left (RTL) easy.**
+//-- url : https://github.com/tysonmatanich/directional-scss
+@import 'utilities/directional';
+
+//Mixins utilities
+@import 'utilities/theme_variables';
+@import 'utilities/utilities';
+
+/* ================================================================================ */
+
+
+.typefooter-12{
+  background-color: #333; 
+  /* GENERAL */
+  .module .modtitle{
+        font-size: 24px; color: #fff;  
+      font-weight: 700;
+      text-transform: uppercase;   
+      margin: 0 0 15px 0;          
+  }
+  .box-infos .module .modtitle{ margin-bottom: 30px; }
+  .box-footer{  margin-top: 20px;      
+    .modcontent{
+      ul.menu{ width: 50%; float: $left;
+        li{           
+              a{
+                border: 0 none;               
+                padding: 0;       
+                font-weight: 300; font-size: 13px;
+                line-height: 35px;  
+                position: relative;          
+                display: inline-block;
+                padding-#{$left}: 0px; color: #fff;
+                @include transition(all 0.2s ease-in-out 0s);
+                &:before{
+                  position: absolute;
+                  content: "";
+                  width: 0px; height: 1px;
+                  top: 50%; margin-top: 0px;
+                  #{$left}: 0;
+                  @include transition(all 0.2s ease-in-out 0s); 
+                }
+                &:hover{ padding-#{$left}: 15px;
+                  &:before{
+                    width: 8px;
+                  }
+                }
+              }       
+            }
+      }
+    }
+  }
+  .footer-top{ position: relative; background-color: #fff;
+    display: inline-block; width: calc(100% + 15px);
+    &:after{
+      position: absolute; content: "";
+      width: 100%; height: 100px;
+      bottom: 0; #{$left}: 15px; z-index: 0;
+    } 
+    .ftop{ position: relative; font-size: 20px; font-weight: 600; color: #fff;
+      padding-top: 115px; padding-bottom: 26px; line-height: 42px; z-index: 99;
+      background-image: url("#{$imgPath}f-person.png"); background-repeat: no-repeat;
+      background-position: $left 0;
+
+      img{ position: absolute; top: -90px; float: $left; display: none; }
+      .call{ font-size: 30px; color: #fff; }
+      .cont{ text-align: $right; line-height: 42px; }
+      .viewdetail{ display: inline-block; float: $right; margin-#{$left}: 55px; 
+        background-color: #ffd800; color: #000; line-height: 42px; padding: 0 25px;
+        border-radius: 5px; font-size: 14px; font-weight: 300;
+        &:hover{ opacity: 0.8; }
+      }
+    }
+  }
+  .footer-middle{
+      padding-top: 50px;
+      padding-bottom: 40px;
+      position: relative;
+      background-color: #333333;
+  }
+  
+  .newsletter-footer11{ margin-top: 20px;
+    .page-heading{
+      font-size: 24px; color: #fff;  
+      font-weight: 700;
+      text-transform: uppercase;   
+      margin: 0 0 15px 0; 
+    }
+    .promotext{
+      font-size: 13px; color: #999;
+    }
+      .newsletter{
+
+        .modtitle{  
+            
+        }
+        .block_content{ margin: 25px 0 30px 0;
+          form.signup{
+            display: block;
+            margin: 0;
+            .form-group{
+              position: relative;
+              input.form-control{
+                border-radius: 0px;
+                height: 46px;
+                line-height: 46px;
+                width: 100%;
+                box-shadow: none;
+                padding: side-values(0 0 0 15px);
+                border: none;           
+                background-color: #fff;    
+                &::-moz-placeholder {
+                      color: #484848;
+                        opacity: 1; 
+                    }
+                    &:-ms-input-placeholder { color: #484848; } 
+                    &::-webkit-input-placeholder  { color: #484848; } 
+                      &:focus{
+                          z-index: 0;
+                      }
+                }
+            }
+
+              .subcribe{
+                position: absolute;
+                  top: 0px;
+                  #{$right}: 0px;
+                  button{       
+                    border: 0 none; color: #000; font-size: 16px;
+                    background-color: transparent;
+                    height: 46px; line-height: 46px;
+                    padding: 0 20px;
+                    &:before{
+                      content: "\f1d8"; 
+                      font-family: "FontAwesome";
+                    }
+                    span{
+                      display: none;
+                    }
+
+                  }
+              } 
+              
+          }
+        }
+      }
+  }
+
+  .store-infos{
+    font-size: 13px; color: #999;
+    p{ margin: 23px 0; }
+    ul{
+      li{
+        width: 50%; float: $left; margin-bottom: 18px;
+        h4{ font-size: 11px; color: #999; text-transform: uppercase; 
+          font-weight: 400; margin-bottom: 5px; }
+        span{ font-size: 13px; color: #fff; line-height: 22px; display: inline-block; }
+      }
+    }
+  }
+  
+  .socials{ 
+    h5{
+      font-size: 13px; color: #fff; font-weight: 400; text-transform: uppercase;
+      float: $left; margin: 0; margin-#{$right}: 20px; line-height: 36px; 
+    }
+      ul li{
+            display: inline-block; margin-#{$right}: 10px;
+            &:last-child{
+              margin-#{$right}: 0px;
+            }
+            a{               
+              &:hover{ opacity: 0.9; }
+
+            }
+        }
+    }
+
+    
+  /* FOOTER BOTTOM */
+
+  .footer-bottom{
+      padding: 20px 0;
+      border-top: 1px solid #484848; background-color: #333333;
+      .copyright{
+        font-size: 13px; color: #999;
+        p{ margin: 0; line-height: 25px; }
+      }
+      .payment-w{
+        text-align: $right;
+      }
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1649px){
+
+}

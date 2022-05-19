@@ -1,0 +1,100 @@
+{#=====Get variable : Config Select Block on header=====#}
+{% set hidden_headercenter = soconfig.get_settings('toppanel_type') =='2'? 'hidden-compact' : '' %}
+{% set hidden_headerbottom = soconfig.get_settings('toppanel_type') =='1'? 'hidden-compact' : '' %}
+
+<header id="header" class=" variant typeheader-{{ typeheader ? typeheader : '1'}}">
+	{#======	HEADER TOP	=======#}  
+		
+	<div class="header-top hidden-compact">	
+		<div class="container">
+			<div class="row">
+				<div class="header-top-left col-lg-7 hidden-md hidden-sm hidden-xs">										
+					{% if soconfig.get_settings('phone_status') %}
+					<div class="telephone hidden-xs" >
+						{{ soconfig.get_settings('contact_number') }}
+					</div>
+					{% endif %}
+				</div>				
+				<div class="header-top-right col-lg-5 col-md-12 col-sm-12 col-xs-12">										
+					<ul class="top-link list-inline lang-curr">												
+						{% if language %} <li class="language">{{ language }} </li>	{% endif %}		
+						{% if currency %} <li class="currency"> {{ currency }}  </li> {% endif %}	
+									
+					</ul>
+					{% if soconfig.get_settings('welcome_message_status') %}
+						<div class="welcome-msg">
+							{% if soconfig.get_settings('welcome_message') is not empty %}
+	                            {{ soconfig.get_settings('welcome_message')}}
+	                        {% endif %} 
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="header-middle {{hidden_headercenter}}">
+		<div class="container">
+			<div class="row">
+				<div class="middle-left col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					<div class="logo">
+				   		{{soconfig.get_logo()}}
+				   	</div>	
+				   				
+				</div>
+				<div class="middle-right-w col-lg-9 col-md-9 col-sm-9 col-xs-12">					
+						<div class="search-header-w">
+							<div class="icon-search hidden visible-xs"><i class="fa fa-search"></i></div>					
+							{{ search_block }}													
+						</div>							
+						{% if header_block %}
+						<div class="header_block hidden-md hidden-sm hidden-xs">
+							{{ header_block }}						
+						</div>
+						{% endif %}					
+					<div class="middle-right">																																								
+						<div class="account" id="my_account">
+							<div class="icon-account">
+								<img class="lazyload" data-sizes="auto" src="image/loading.svg" data-src="image/catalog/banners/icon/user.png" alt="ico">
+							</div>
+							<a href="{{ account }}" title="{{ text_account }}" class="btn-xs dropdown-toggle" data-toggle="dropdown"><span>{{ text_account }}</span></a>
+							<ul class="dropdown-menu ">
+								{% if logged %} 
+									<li class="log logout"><a href="{{ logout }} "> {{ text_logout }} </a></li>
+								{% else %}   
+									<li class="log login">
+										<a href="{{ login }} ">{{ text_login }} </a></li>							
+								{% endif %}
+								<li><a href="{{ account }}">{{ text_account }}</a></li>
+								<li><a href="{{ order }}">{{ text_order }}</a></li>
+								<li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
+								<li><a href="{{ download }}">{{ text_download }}</a></li>								
+							</ul>
+						</div>	
+						<div class="wishlist hidden-md hidden-sm hidden-xs">
+							<div class="icon-wish">
+								<img class="lazyload" data-sizes="auto" src="image/loading.svg" data-src="image/catalog/banners/icon/heart.png" alt="ico">
+							</div>
+							<a href="{{ wishlist }}" class="top-link-wishlist" title="{{ text_wishlist }} "> {{ text_wishlist }} </a>
+						</div>
+						<div class="shopping_cart">							
+						 	{{ cart }}
+						</div>						
+					</div>									
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="header-bottom {{hidden_headerbottom}}">
+		<div class="container">		
+			<div class="bottom1 menu-vertical">
+				{{ content_menu2 }}		
+			</div>
+			
+			<div class="main-menu-w">					
+				{{ content_menu1 }}								
+			</div>
+		</div>
+	</div>
+
+</header>

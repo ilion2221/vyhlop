@@ -1,0 +1,230 @@
+
+//** simple and lightweight mixin library for Sass **
+//-- url : http://bourbon.io/docs ---
+@import 'bourbon/bourbon';
+
+//** Mixins for Rem Font Sizing **
+//-- url : http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@import 'utilities/rem';
+
+//** Variables for responsive design in bootstrap with sass **
+//-- url : https://gist.github.com/webinfinita/11407836
+@import 'utilities/bootstrap_breakpoints';
+
+//** Makes supporting both left-to-right (LTR) and right-to-left (RTL) easy.**
+//-- url : https://github.com/tysonmatanich/directional-scss
+@import 'utilities/directional';
+
+//Mixins utilities
+@import 'utilities/theme_variables';
+@import 'utilities/utilities';
+
+/* ================================================================================ */
+
+
+.typefooter-10{
+  padding-top: 0px;
+  background-color: #28272d;
+  /* GENERAL */
+  .module .modtitle{
+      font-size: 14px; color: #fff;  
+      font-weight: 500;
+      text-transform: uppercase;   
+      margin: 0 0 25px 0;        
+      position: relative; padding-bottom: 18px;
+      &:before{ position: absolute; content: ""; width: 30px; height: 3px; border-top: 3px dotted $background; bottom: 0; #{$left}:0; }  
+  }
+  .box-infos .module .modtitle{ margin-bottom: 30px; }
+  .box-footer{        
+    .modcontent{
+      ul.menu{
+        li{           
+              a{
+                border: 0 none;               
+                padding: 0;       
+                font-weight: 400; 
+                line-height: 18px;  
+                position: relative;          
+                display: inline-block;
+                margin-#{$left}: 0px;
+                @include transition(all 0.2s ease-in-out 0s);
+                color: #bbb;
+                border-bottom: 1px dashed transparent; margin-bottom: 13px;
+                &:hover{ margin-#{$left}: 10px;                 
+                }
+              }       
+            }
+      }
+    }
+  }
+  
+  .so-instagram-gallery .instagram-items-inner{ margin: 0 -10px;
+    .instagram-item{
+      float: $left;
+        margin-bottom: 20px;
+        padding: 0 10px;
+        position: relative;
+       
+      .img_users a{
+        border: none;
+        &:hover{
+              img{
+                opacity: 0.8;
+              }
+            }
+        img{
+          border-radius: 5px;
+        }
+      } 
+
+    }
+  }
+  	.so-page-builder .container{ overflow: visible; padding: 0; }
+    .footer-middle{
+     	.col-links{ padding-top: 60px; padding-bottom: 0px; }
+	    .col-infos{ background-color: #15141c; position: relative; padding-top: 60px; padding-bottom: 55px;
+	      	&:before{ background-color: #15141c; position: absolute; content: ""; width: 200%; height: 100%; top: 0; #{$left}: -100%; }
+	    }
+    }
+  	.row-bottom{ background-color: #1b1c21; }
+  .newsletter-footer10{
+      .newsletter{
+      	.page-heading{
+      		font-size: 20px; color: #bbb; width: 42%; float: $left; line-height: 40px; margin: 33px 0;
+          @media (min-width: 1200px) and (max-width: 1650px){ font-size: 16px; }
+      		b{ color: $background; border-bottom: 1px dashed $background; font-weight: 500; }
+      	}
+      	.promotext{ display: none; }
+        .block_content{ margin: 33px 0;
+          width: 57%; float: $left;      
+          form.signup{
+            display: block;
+            margin: 0; 
+           // @media (min-width: 1366px){ width: 100%; margin-#{$right}: 30px; }
+            .form-group{
+              position: relative;width: 100%;
+              .input-box{ float: $left; width: 70%;
+                @media(min-width: 1700px){ width: 74%; }
+              }
+              input.form-control{
+                border-radius: 20px;
+                height: 40px;
+                line-height: 40px;
+                width: 100%; color: #bbbbbb;
+                box-shadow: none;
+                padding: side-values(0 0 0 15px);
+                border: none;           
+                background-color: #49494d;    
+                &::-moz-placeholder {
+                      color: #bbbbbb;
+                        opacity: 1; 
+                    }
+                    &:-ms-input-placeholder { color: #bbbbbb; } 
+                    &::-webkit-input-placeholder  { color: #bbbbbb; } 
+	                &:focus{
+	                    z-index: 0;
+	                }
+                }
+            }
+
+            //.input-box{ display: table-cell; }
+              .subcribe{ 
+                // display: table-cell;
+                  button{       
+                  border: 0 none;
+                  color: #fff;
+                  font-weight: 500;
+                  font-size: 14px;
+                  height: 40px;
+                  line-height: 40px;
+                  padding: 0 30px;    
+                  text-transform: uppercase;
+                  border-radius: 20px; margin-#{$left}: 25px;
+              }
+              } 
+              
+          }
+        }
+      }
+  }
+  .so-page-builder .container-top{
+    margin: 0 auto;
+    padding: 0;
+  }
+  .row-dark{
+
+  }
+  .socials{
+    float: $left; margin-top: 30px;
+    li{
+      position: relative;
+      float: $left;
+      margin: side-values(0 10px 0 0);
+      a{
+        color: #fff;
+          font-size: 18px;
+          width: 40px; height: 40px;
+          line-height: 40px;
+          text-align: center;
+          background-color: rgba(0,0,0,0.2);
+          border-radius: 3px;
+          display: block;
+          span{
+            display: none;
+          }
+          &:hover{ opacity: 0.8; }
+      }
+      &.facebook a{ background-color: #4a6dbf; }
+      &.youtube a{ background-color: #f22231; }
+      &.twitter a{ background-color: #2ac1f2; }
+      &.google_plus a{ background-color: #f4313b; }
+      &.instagram a{ background: linear-gradient(#f57530, #d72f89, #6b4cc1); }
+      &.pinterest a{ background-color: #c8232c; }
+    }
+  }
+
+
+  	.row-bottom{
+  		.col-bottom{
+  			margin: 0 auto; float: none;
+  			.container-w{ padding: 0; }
+  		}
+  	}
+    .box-infos{
+      color: #bbb;
+      .modcontent{ position: relative; }
+      .list-icon{
+        li{
+          padding-#{$left}: 24px; margin-bottom: 10px;
+          position: relative;
+          a{ color: #bbb; }
+          .icon{ font-size: 14px; position: absolute; top: 5px; #{$left}: 0; 
+            font-weight: 600;            
+          }
+          p{ margin-bottom: 5px; line-height: 20px; }
+        }
+      }
+    }
+  /* FOOTER BOTTOM */
+
+  .footer-bottom{
+      padding: 5px 0;
+      background-color: #ffffff;
+      .container{ padding: 0; }
+      .copyright{
+        font-size: 13px; color: #666666;
+        padding-top: 3px;        
+        a{ color: #222;
+          &:hover{ color: $linkColor; } 
+        }
+      }
+      .payment-w{
+        text-align: $right;
+      }
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1649px){
+
+}

@@ -1,0 +1,111 @@
+{#
+****************************************************** 
+ * @package	SO Framework for Opencart 3.x
+ * @author	http://www.opencartworks.com
+ * @license	GNU General Public License
+ * @copyright(C) 2008-2017 opencartworks.com. All rights reserved.
+ ******************************************************
+#}
+<!DOCTYPE html>
+<html dir="{{ direction }}" lang="{{ lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+{% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+{% if keywords %}<meta name="keywords" content="{{ keywords }}" />{% endif %}
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+{# =========== Begin General CSS ==============#}
+{% if direction=='ltr' %} {{soconfig.addCss('catalog/view/javascript/bootstrap/css/bootstrap.min.css')}}
+{% elseif direction=='rtl' %}{{soconfig.addCss('catalog/view/javascript/soconfig/css/bootstrap/bootstrap.rtl.min.css')}} 
+{% else %}{{soconfig.addCss('catalog/view/javascript/bootstrap/css/bootstrap.min.css')}} {% endif %}
+{{soconfig.addCss('catalog/view/javascript/font-awesome/css/font-awesome.min.css')}}
+{{soconfig.addCss('catalog/view/javascript/soconfig/css/lib.css')}}
+
+{{soconfig.addCss('catalog/view/javascript/soconfig/css/slick.css')}}
+
+{{soconfig.addCss('catalog/view/theme/'~theme_directory~'/css/ie9-and-up.css')}}
+{{soconfig.addCss('catalog/view/theme/'~theme_directory~'/css/custom.css')}}
+{{soconfig.addCss('catalog/view/javascript/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}
+{{soconfig.addCss('catalog/view/javascript/pe-icon-7-stroke/css/helper.css')}}
+{% for style in styles %}{{ soconfig.addCss(style.href)}}{% endfor %}
+{# =========== Begin General Scripts ==============#}
+{{soconfig.addJs('catalog/view/javascript/jquery/jquery-2.1.1.min.js')}}
+{{soconfig.addJs('catalog/view/javascript/bootstrap/js/bootstrap.min.js')}}
+{{soconfig.addJs('catalog/view/javascript/soconfig/js/libs.js')}}
+{{soconfig.addJs('catalog/view/javascript/soconfig/js/so.system.js')}}
+{{soconfig.addJs('catalog/view/javascript/soconfig/js/jquery.sticky-kit.min.js')}}
+{{soconfig.addJs('catalog/view/javascript/lazysizes/lazysizes.min.js')}}
+{% if class=='information-information' %} {{soconfig.addJs('catalog/view/javascript/soconfig/js/typo/element.js')}} {% endif %}
+{% if soconfig.get_settings('toppanel_status') %}{{soconfig.addJs('catalog/view/javascript/soconfig/js/toppanel.js')}}{% endif %}
+{% if soconfig.get_settings('typelayout') =='3' %}
+	{{soconfig.addJs('catalog/view/javascript/soconfig/js/slick.js')}}
+{% endif %}
+{{soconfig.addJs('catalog/view/javascript/soconfig/js/slick.js')}}
+{{soconfig.addJs('catalog/view/theme/'~theme_directory~'/js/common.js')}}
+{{soconfig.addJs('catalog/view/theme/'~theme_directory~'/js/so.custom.js')}}
+
+{{soconfig.addJs('catalog/view/theme/'~theme_directory~'/js/custom.js')}}
+
+{% for script in scripts %} {{soconfig.addJs(script)}} {% endfor %}
+{# =========== Begin Other CSS & JS  ==============#}
+{{soconfig.scss_compass}}
+{{soconfig.css_out(soconfig.get_settings('cssExclude'))}}
+{{soconfig.js_out(soconfig.get_settings('jsExclude'))}}
+{# =========== Custom Code Editor ==============#}
+{% if soconfig.get_settings('cssinput_status') and (soconfig.get_settings('cssinput_content')) is not empty %}{{ soconfig.get_settings('cssinput_content')  }} {% endif %} 
+{# =========== Begin Google Analytics ==============#}
+{% for link in links %}<link href="{{ link.href }}" rel="{{ link.rel }}" />{% endfor %}
+{% for analytic in analytics %}{{ analytic }}{% endfor %}
+
+{% if soconfig.get_settings('layoutstyle') == 'boxed'  %} 
+<style type="text/css">
+body {
+    background-color:{{ soconfig.get_settings('theme_bgcolor') ? soconfig.get_settings('theme_bgcolor') : 'none' }} ;       
+    {% if soconfig.get_settings('contentbg') !='' %}
+        background-image: url("image/{{soconfig.get_settings('contentbg') }} ");
+    {% endif %}
+    background-repeat:{{ soconfig.get_settings('content_bg_mode') is not empty ? soconfig.get_settings('content_bg_mode') : 'no-repeat' }} ;
+    background-attachment:{{ soconfig.get_settings('content_attachment') is not empty ? soconfig.get_settings('content_attachment') : 'inherit' }} ;
+    background-position:top center; 
+}
+</style>
+{% endif %} 
+ 
+</head>
+{# =========== Add class Body ==============#}
+{% set layoutbox =  url_layoutbox is not empty  ? url_layoutbox : soconfig.get_settings('layoutstyle') %}
+{% set cls_body = class ~ ' ' %}
+{% set cls_body = cls_body ~ direction %}
+{% set cls_body = cls_body ~ ' layout-'~soconfig.get_settings('typelayout')%}
+{% set cls_wrapper = 'wrapper-'~layoutbox%}
+{% set cls_wrapper = cls_wrapper ~ ' banners-effect-'~soconfig.get_settings('type_banner')%}
+	
+<body class="{{cls_body}}">
+<div id="wrapper" class="{{cls_wrapper}}">  
+ 
+{# =========== Show Preloader ==============#}
+{% if soconfig.get_settings('preloader')%}
+	{% include theme_directory~'/template/soconfig/preloader.twig' with {preloader: soconfig.get_settings('preloader_animation')} %}
+{% endif %}
+
+{# =========== Show Header==============#}
+{% if soconfig.get_settings('typeheader') %}
+	{% include theme_directory~'/template/header/header'~ soconfig.get_settings('typeheader') ~'.twig' with {typeheader: soconfig.get_settings('typeheader')} %}
+
+{% else%}	
+	<style>
+		.alert-primary .alert-link {color: #002752;}
+		.alert-link {font-weight: 700;text-decoration: none;}
+		.alert-link:hover{text-decoration: underline;}
+		.alert {color: #004085;background-color: #cce5ff;padding: .75rem 1.25rem;margin-bottom: 1rem;border: 1px solid #b8daff;border-radius: .25rem;
+		}
+	</style>
+	<div class="alert alert-primary">
+			Go to admin, find Extensions >>  <a class="alert-link" href="admin/index.php?route=marketplace/modification"  target=”_blank”> Modifications </a> and click 'Refresh' button. To apply the changes characterised by the uploaded modification file
+	</div>
+{% endif %}
+
+<div id="socialLogin"></div>
