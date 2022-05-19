@@ -23,7 +23,7 @@
       <path value="$PROJECT_DIR$/new/upload/system/storage/vendor/braintree/braintree_php" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0">
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
 </project>
