@@ -1,0 +1,39 @@
+<form action="#" id="ajax-form-{{ product_id }}" class="contact-form-box ajax-form so-askquestion-form">
+    <input type="hidden" name="askquestion_product_id" value='{{ product_id }}' />
+    <h3 class="page-subheading">{{ text_form_title }}</h3>
+    <div class="row clearfix">
+        <div class="col-sm-12">
+            {% if show_name %}
+            <div class="form-group">
+                <label for="name">{{ text_name }} {% if require_name %}<sup>*</sup>{% endif %}</label>
+                <input type="text" value="" class="form-control" name="askquestion_name" id="askquestion_name_{{ product_id }}">
+            </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="email">{{ text_email }} <sup>*</sup></label>
+                <input type="text" value="" class="form-control" name="askquestion_email"  id="askquestion_email_{{ product_id }}">
+            </div>
+            {% if show_phone %}
+            <div class="form-group">
+                <label for="subject">{{ text_phone }} {% if require_phone %}<sup>*</sup>{% endif %}</label>
+                <input type="text" value="" class="form-control" name="askquestion_telephone"  id="askquestion_telephone_{{ product_id }}">
+            </div>
+            {% endif %}
+            {% if show_question %}
+            <div class="form-group">
+                <label for="Message">{{ text_question }} {% if require_question %}<sup>*</sup>{% endif %}</label>
+                <textarea id="askquestion_comment_{{ product_id }}" name="askquestion_comment" class="form-control inquiry_detail"></textarea>
+            </div>
+            {% endif %}
+        </div>
+        <div class="actions col-sm-12">
+            <button id="content-send-{{ product_id }}" data-loading-text="{{ text_loading }}" name="askquestion-button" class="button btn btn-primary button-medium" type="button" onclick="sendData('{{ product_id }}');">
+                <span>{{ text_submit }}</span>
+            </button>
+        </div>
+        <div class="col-sm-12 mt-10">
+            <div style="display:none" class="alert alert-success" id="askquestion_success_{{ product_id }}"></div>
+            <div style="display:none" class="alert alert-danger" id="askquestion_error_{{ product_id }}"></div>
+        </div>
+    </div>
+</form>

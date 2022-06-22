@@ -6,40 +6,9 @@
 	
 	<form method="GET" action="index.php">
 		<div id="search{{ module }}" class="search input-group form-group">
-		
-			{% if categories %} 
-			<div class="select_category filter_type  icon-select hidden-sm hidden-xs">
-				<select class="no-border" name="category_id">
-					<option value="0">{{ text_category_all  }} </option>
-					{% for category in categories %} 
-						
-						{% if category.category_id  ==  category_id %} 
-							<option value="{{ category.category_id }} " selected="selected">{{ category.name }} </option>
-						{% else %}   
-							<option value="{{ category.category_id }} ">{{ category.name }} </option>
-						{% endif %} 
-						
-						{% for category_lv2 in category.children %} 
-							
-							{% if category_lv2.category_id  ==  category_id %} 
-								<option value="{{ category_lv2.category_id }} " selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ category_lv2.name }} </option>
-							{% else %}   
-								
-								<option value="{{ category_lv2.category_id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{category_lv2.name}} </option>
-							{% endif %} 
-							
-							{% for category_lv3 in category_lv2.children %} 
-								{% if category_lv3.category_id  ==  category_id %} 
-									<option value="{{ category_lv3.category_id }} " selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_lv3.name }} </option>
-								{% else %}   
-									<option value="{{ category_lv3.category_id }} ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_lv3.name }} </option>
-								{% endif %} 
-							{% endfor %}
-						{% endfor %}
-					{% endfor %}
-				</select>
-			</div>
-			{% endif %}  
+
+{#			if categories was here LOL#}
+			
 			<input class="autosearch-input form-control" type="search" value="" size="50" autocomplete="off" placeholder="{{ text_search  }}" name="search">
 			
 			<button type="submit" class="button-search btn btn-default btn-lg" name="submit_search"><i class="fa fa-search"></i></button>

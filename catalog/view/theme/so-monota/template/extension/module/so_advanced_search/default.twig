@@ -1,10 +1,14 @@
+<div class="container-fluid">
+	<div class="row row_heul  row-advanced ">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_slla  box-advanced-search">
 <div class="so_advanced_search">
 	<div class="sas_wrap">
 		<div class="sas_inner">
 			<div class="heading-title"><h2>{{ objlang.get('heading_title') }}</h2></div>
 			<div class="sas_inner-box-search">
 				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-boxes">
 						<select name="make" id="so_make{{ module }}" class="form-control">
 							<option value="">{{ objlang.get('text_select_make') }}</option>
 							{% for make in makes %}
@@ -12,7 +16,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-boxes">
 						<select name="model" id="so_model{{ module }}" class="form-control">
 							<option value="">{{ objlang.get('text_select_model') }}</option>
 							{% if make_id %}
@@ -24,7 +28,7 @@
 							{% endif %}
 						</select>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-boxes">
 						<select name="engine" id="so_engine{{ module }}" class="form-control">
 							<option value="">{{ objlang.get('text_select_engine') }}</option>
 							{% if model_id %}
@@ -36,7 +40,7 @@
 							{% endif %}
 						</select>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-boxes">
 						<select name="year" id="so_year{{ module }}" class="form-control">
 							<option value="">{{ objlang.get('text_select_year') }}</option>
 							{% if engine_id %}
@@ -48,11 +52,14 @@
 							{% endif %}
 						</select>
 					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-button">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 search-button">
 						<button type="button" id="sas_search_button{{ module }}">{{ objlang.get('button_search') }}</button>
 					</div>
 				</div>				
 			</div>
+		</div>
+	</div>
+</div>
 		</div>
 	</div>
 </div>
